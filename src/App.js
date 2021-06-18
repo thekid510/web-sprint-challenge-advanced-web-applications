@@ -5,14 +5,26 @@ import Login from "./components/Login";
 import "./styles.scss";
 import PrivateRoute from '../src/components/PrivateRoute';
 import BubblePage from "./components/BubblePage";
+import axios from "axios";
 
-const handleLogOut= ()=> {
+import {axiosWithAuth} from './helpers/axiosWithAuth'
+
+// const handleLogOut= ()=> {
+// const token = localStorage.getItem("token");
+//   axiosWithAuth()
+//   .post("/logout")
+//   .then(res => {
+//     console.log("this is the res", res)
+//     localStorage.removeItem("token");
+//     window.location.href = "/login";
+
+//   })
+//   .catch( err => {
+//     console.log(err)
+//   })
 
 
-
-
-
-}
+// }
 
 
 function App() {
@@ -27,7 +39,7 @@ function App() {
         <PrivateRoute path ="/bubbles">
           <BubblePage />
         </PrivateRoute>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/login" component={Login} />
         </Switch>
       </div>
     </Router>
