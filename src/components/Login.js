@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const initialValues=  {username:"", password:""};
+const initialValues=  {username:"Lambda", password:"School"};
 
 const Login = () => {
   const [formValues, setFormValues] = useState(initialValues);

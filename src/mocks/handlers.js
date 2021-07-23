@@ -87,7 +87,8 @@ let nextId = 12;
 
 function authenticator(req) {
   const { authorization } = req.headers.map;
-  return (authorization === token);
+  return true;
+  // return (authorization === token);
 }
 
 const urlBase = 'http://localhost:5000/api';

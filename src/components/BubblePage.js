@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
 // import { editColorService, deleteColorService } from '../services/colorServices';
-// import fetchColorService from '../services/fetchColorService';
+import fetchColorService from '../services/fetchColorService';
 
 const BubblePage = () => {
   const [colors, setColors] = useState([]);
@@ -15,15 +15,27 @@ const BubblePage = () => {
   };
 
   const saveEdit = (editColor) => {
+    setEditing(editColor)
   };
 
   const deleteColor = (colorToDelete) => {
+    setColors(colors.filter(color => color!== colorToDelete));
   };
+  useEffect(() => {
+    fetchColorService()
+      .then(({data}) => {
+        setColors(data);
+        
+      })
+      .catch(e => console.log(e));
+  }, []);
+
 
   return (
     <div className="container">
       <ColorList colors={colors} editing={editing} toggleEdit={toggleEdit} saveEdit={saveEdit} deleteColor={deleteColor}/>
-      <Bubbles colors={colors}/>
+    
+      <Bubbles colors={colors}/>  
     </div>
   );
 };
